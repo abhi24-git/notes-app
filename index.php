@@ -1,7 +1,11 @@
-<<!DOCTYPE html>
+<?php
+// index.php
+?>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>DevOps CI/CD Deployment Notes-App</title>
+    <meta charset="utf-8" />
+    <title>Next-Level DevOps CI/CD Deployment Notes-App</title>
     <style>
         body {
             font-family: "Segoe UI", Arial, sans-serif;
@@ -26,8 +30,8 @@
         }
 
         @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(20px);} 
-            to {opacity: 1; transform: translateY(0);} 
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
         }
 
         h1 {
@@ -123,32 +127,33 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>DevOps CI/CD Deployment Notes-App</h1>
-        <form action="save.php" method="post">
-            <textarea name="note" placeholder="Write your DevOps CI/CD notes here..."></textarea><br>
-            <button type="submit">💾 Save Note</button>
-        </form>
+<div class="container">
+    <h1>Next-Level DevOps CI/CD Deployment Notes-App</h1>
 
-        <h2>Saved Notes:</h2>
-        <div class="notes-box">
-            <pre>
+    <form action="save.php" method="post">
+        <textarea name="note" placeholder="Write your DevOps CI/CD notes here..."></textarea><br>
+        <button type="submit">💾 Save Note</button>
+    </form>
+
+    <h2>Saved Notes:</h2>
+    <div class="notes-box">
+        <pre>
 <?php
-if (file_exists("/data/notes.txt")) {
-    echo file_get_contents("/data/notes.txt");
+$notesFile = __DIR__ . '/data/notes.txt';
+
+if (file_exists($notesFile)) {
+    echo htmlspecialchars(file_get_contents($notesFile));
 } else {
     echo "No notes yet. Start writing your first DevOps CI/CD note!";
 }
 ?>
-            </pre>
-        </div>
+        </pre>
+    </div>
 
-        <div class="footer">
-            Developed by <span>Abhishek Jadhav</span>
-        </div>
+    <div class="footer">
+        Developed & Automated by <span>Abhishek Jadhav</span>
     </div>
+</div>
 </body>
 </html>
-    </div>
-</body>
-</html>
+

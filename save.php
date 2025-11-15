@@ -1,11 +1,18 @@
 <?php
-$note = $_POST['note'] ?? '';
+// save.php
+$notesDir = __DIR__ . '/data';
+$notesFile = $notesDir . '/notes.txt';
 
-if (!empty($note)) {
-    file_put_contents("/data/notes.txt", $note . PHP_EOL, FILE_APPEND);
+if (!is_dir($notesDir)) {
+    mkdir($notesDir, 0755, true);
+    chown($notesDir, posix_getuid()); // optional if ownership needed
 }
 
-header("Location: index.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['note'])) {
+    $note = trim($_POST['note']) . PHP_EOL . '---' . PHP_EOL;
+    file_put_contents($notesFile, $note, FILE_APPEND | LOCK_EX);
+}
+
+header('Location: /');
 exit;
-?>
 
