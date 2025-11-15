@@ -13,7 +13,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Satyams-git/notes-app.git'
+                git branch: 'master', url: 'https://github.com/abhi24-git/notes-app.git'
             }
         }
 
