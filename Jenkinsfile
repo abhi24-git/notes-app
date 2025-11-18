@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+   agent { label "Dev" }
 
     environment {
         IMAGE_NAME = "notes-app"
